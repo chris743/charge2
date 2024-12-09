@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Commodities List</title>
+</head>
+<body>
+    <h1>Commodities List</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Description</th>
+                <th>Average Carton Price</th>
+                <th>Standard Carton Cost</th>
+                <th>Price Per Pound</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for commodity in commodities %}
+            <tr>
+                <td>{{ commodity.description }}</td>
+                <td>{{ commodity.avgCtnPrice }}</td>
+                <td>{{ commodity.stdCtnCost }}</td>
+                <td>{{ commodity.pricePerPound }}</td>
+                <td>
+                    <a href="{% url 'edit_commodity' commodity.id %}">Edit</a>
+                </td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="5">No commodities found.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="/">Back to Home</a> <!-- Adjust as needed -->
+</body>
+</html>
